@@ -31,6 +31,7 @@ The following analysis aims to
 - The model that performed best, similarily, was that that used only significant principal components:
 ![image](https://github.com/a-memme/predicting_crime_pca/assets/79600550/dd9ff38f-d09b-472c-993f-2563ccb7951d)
 
-## Limitations 
+### Limitations 
+- 
 
 
