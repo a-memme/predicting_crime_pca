@@ -59,19 +59,25 @@ unscaled_intercept <- model$coefficients[1] - sum(c_scaled * (mu/sigma))
 #Final equation - in the style y= ax + b
 prediction <- (as.matrix(crime_ivs) %*% unscaled_coeffs[1, ]) + unscaled_intercept
 ```
+## Discussion
+### PCA
+- The above analysis displays how PCA can be used as a dimensionality reduction technique prior to building a predictive model.
+- In our case, models using the original data vs the transformed data via PCA elicit very similar results however, only seeing very slightly better performance in MAE and RMSE in the PCA version.
+
+### Original Vector Space 
+- Transforming principal components back to their original vector space allows for:
+    - presentation of the model that is compatible with the raw data but still represents the dimensionality of the Principal Component Analysis
+    - help with model interpretation and greater functionality when considering ETL/automated processes.
 
 ### Limitations 
 - As mentioned in the introduction, the principal components chosen via PCA may not always lead directly to the most relevant metrics to the response variable. Sometimes, although a variable may have greater variance, it may be a poorer predictor of the response variable. See the example of the 2D data below:
 
 ![image](https://github.com/a-memme/predicting_crime_pca/assets/79600550/170b9cd3-68ae-468c-85a4-3af8adfdcbb0)
 
-- In our case, the scree plot below suggests that only the first 2-4 principal components should be used in the model based solely on the amount of variance present in each. As witnessed via cross-validation, the best performing model using principal components was actually the model that simply used all components deemed as significant in the original model, containing some lower ranked principal components (such as PC12) which innately contain less variance, and skip some higher ranked ones (such as PC3).
+- In our case, the scree plot below suggests that only the first 2-4 principal components should be used in the model based solely on the amount of variance present in each. As witnessed via cross-validation, the best performing regression model that used principal components was the one that simply used all components deemed as significant from the original model - i.e one that contained lower ranked principal components (such as PC12) which innately contain less variance, and skip some higher ranked ones (such as PC3).
 ```
 #Visualize - scree plot to employ elbow method
 screeplot(pca1, type='lines')
 ```
 ![image](https://github.com/a-memme/predicting_crime_pca/assets/79600550/dd5e0a25-a20a-460b-8512-2ecd6bef2652)
 
-## Discussion
-- Represent the model in a way that is compatible with the raw data points but still represents the dimensionality of the Principal Component Analysis
-- Why? Because said transformation could help immensley with the interpretation of the model (especially in linear regression), and can provide greater leeway to ETL processes where dimensionality reduction may be unfavourable to perform in the pipeline itself.
