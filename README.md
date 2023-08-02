@@ -62,6 +62,7 @@ prediction <- (as.matrix(crime_ivs) %*% unscaled_coeffs[1, ]) + unscaled_interce
 
 ### Limitations 
 - As mentioned in the introduction, the principal components chosen via PCA may not always lead directly to the most relevant metrics to the response variable. Sometimes, although a variable may have greater variance, it may be a poorer predictor of the response variable. See the example of the 2D data below:
+
 ![image](https://github.com/a-memme/predicting_crime_pca/assets/79600550/170b9cd3-68ae-468c-85a4-3af8adfdcbb0)
 
 - In our case, the scree plot below suggests that only the first 2-4 principal components should be used in the model based solely on the amount of variance present in each. As witnessed via cross-validation, the best performing model using principal components was actually the model that simply used all components deemed as significant in the original model, containing some lower ranked principal components (such as PC12) which innately contain less variance, and skip some higher ranked ones (such as PC3).
