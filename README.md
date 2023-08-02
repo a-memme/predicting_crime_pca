@@ -34,13 +34,15 @@ The following analysis aims to
 
 ### Expressing PCA in Original Terms (Reversing Linear Transformation)
 - The transformed coefficients are first multiplied by the matrix of eigenvectors to reverse the original rotation(s):
-'''
+
+```
 #Slice the coefficients to exclude the intercept, and multiply coefficients by eigenvectors (i.e rotations)
 b_coeffs <- model$coefficients[2:5]
 
 #reverse the rotation by multiplying coefficients by eigenvectors
 c_scaled <- (b_coeffs %*% t(pca$rotation[, c(1,2,4,5)]))
-'''
+```
+
 - The formula below represents how to transform standardized predictors back to the original form, where Bj is the scaled regression coefficient of the jth predictor and B0 is the scaled intercept:
   ![image](https://github.com/a-memme/predicting_crime_pca/assets/79600550/0de86e68-be2f-4708-a0a6-a0cdb6d30416)
 - Finally, the model (as initially represented by principal components) is 
