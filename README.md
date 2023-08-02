@@ -22,7 +22,7 @@ The following analysis aims to
 
 ## Results
 
-### Evaluation 
+### Model Evaluation 
 ##### Multiple Regression - Original Dataset
 - The model using only predictor variables deemed as significant (p < 0.05) or close to significant (p < 0.1) yielded the best performance in cross validation:
 ![image](https://github.com/a-memme/predicting_crime_pca/assets/79600550/c74b4b29-179f-4c13-a782-51cf7512791b)
