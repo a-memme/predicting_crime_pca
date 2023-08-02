@@ -21,17 +21,31 @@ The following analysis aims to
 - Principal components are then transformed back to their original vector space and models chosen via evaluation are tested and compared for performance.
 
 ## Results
-### Multiple Regression - Original Dataset
+### Evaluation 
+##### Multiple Regression - Original Dataset
 - The model using only predictor variables deemed as significant (p < 0.05) or close to significant (p < 0.1) yielded the best performance in cross validation:
 ![image](https://github.com/a-memme/predicting_crime_pca/assets/79600550/c74b4b29-179f-4c13-a782-51cf7512791b)
 
-### Multiple Regression - PCA 
+##### Multiple Regression - PCA 
 - Using the prcomp() function in R, the predictor variables in the original dataset are isolated, and pca is applied.
 - Once the principal components are merged back onto the respective response data, multiple regression models are fit to several different iterations of the data, based on model significance and/or scree plot inference (see below)
-- The model that performed best, similarily, was that that used only significant principal components:
+- The model that performed best, similarily, was that that used only principal components deemded as significant in the original model:
 ![image](https://github.com/a-memme/predicting_crime_pca/assets/79600550/dd9ff38f-d09b-472c-993f-2563ccb7951d)
+
+### Expressing PCA in Original Terms (Reversing Linear Transformation)
+##### Purpose
+- Represent the model in a way that is compatible with the raw data points but still represents the dimensionality of the Principal Component Analysis
+- Why? Because said transformation could help immensley with the interpretation of the model (especially in linear regression), and can provide greater leeway to ETL processes where dimensionality reduction may be unfavourable to perform in the pipeline itself.
+##### Execution 
+- The transformed coefficients are first multiplied by the matrix of eigenvectors to reverse the rotation originally made.
+- The formula below represents how to transform standardized predictors back to the original form, where Bj is the scaled regression coefficient of the jth predictor and B0 is the scaled intercept:
+  ![image](https://github.com/a-memme/predicting_crime_pca/assets/79600550/0de86e68-be2f-4708-a0a6-a0cdb6d30416)
+- Finally, the model (as initially represented by principal components) is 
+
+### Testing 
 
 ### Limitations 
 - 
 
+## Discussion
 
