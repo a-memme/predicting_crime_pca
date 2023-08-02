@@ -42,6 +42,7 @@ b_coeffs <- model$coefficients[2:5]
 c_scaled <- (b_coeffs %*% t(pca$rotation[, c(1,2,4,5)]))
 ```
 - The formula below represents how to transform standardized predictors back to their original form, where βj is the scaled regression coefficient of the jth predictor and β0 is the scaled intercept. In this step, we simply need to plug in the scaled coefficients, mean and standard deviation values after the rotation in the previous step (See point below for details):
+
   ![image](https://github.com/a-memme/predicting_crime_pca/assets/79600550/0de86e68-be2f-4708-a0a6-a0cdb6d30416)
   
 - Finally, the same model created using the principal components derived from PCA, can be expressed in raw-value terms in the form of y = mx + b:
