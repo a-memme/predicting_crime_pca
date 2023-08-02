@@ -1,5 +1,5 @@
 # Principal Component Analysis (PCA) and Predicting Crime Rates
-*Showcasing how PCA can be used to improve simple/multiple regression, and how principal components can be transformed back to their original space for better interpretability*
+*Showcasing how PCA can be used as an effective dimensionality technique prior to model fitting, and how principal components can be transformed back to their original space for better interpretability*
 
 # PCA
 Principal Component Analysis is a dimensionality reduction method that becomes particularly useful when dealing with large datasets containing a wide array of dimensions. Through performing a linear transformation of the variables, PCA is effective in removing multicolinearity of the predictors, and through its ranking system, allows the analyst to further reduce the effects of randomness by concentrating on the top (components containing the most variance) principal components - i.e an effective technique for dimensionality reduction & simplifying the model. 
