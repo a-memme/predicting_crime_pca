@@ -33,11 +33,14 @@ The following analysis aims to
 ![image](https://github.com/a-memme/predicting_crime_pca/assets/79600550/dd9ff38f-d09b-472c-993f-2563ccb7951d)
 
 ### Expressing PCA in Original Terms (Reversing Linear Transformation)
-##### Purpose
-- Represent the model in a way that is compatible with the raw data points but still represents the dimensionality of the Principal Component Analysis
-- Why? Because said transformation could help immensley with the interpretation of the model (especially in linear regression), and can provide greater leeway to ETL processes where dimensionality reduction may be unfavourable to perform in the pipeline itself.
-##### Execution 
-- The transformed coefficients are first multiplied by the matrix of eigenvectors to reverse the rotation originally made.
+- The transformed coefficients are first multiplied by the matrix of eigenvectors to reverse the original rotation(s):
+'''
+#Slice the coefficients to exclude the intercept, and multiply coefficients by eigenvectors (i.e rotations)
+b_coeffs <- model$coefficients[2:5]
+
+#reverse the rotation by multiplying coefficients by eigenvectors
+c_scaled <- (b_coeffs %*% t(pca$rotation[, c(1,2,4,5)]))
+'''
 - The formula below represents how to transform standardized predictors back to the original form, where Bj is the scaled regression coefficient of the jth predictor and B0 is the scaled intercept:
   ![image](https://github.com/a-memme/predicting_crime_pca/assets/79600550/0de86e68-be2f-4708-a0a6-a0cdb6d30416)
 - Finally, the model (as initially represented by principal components) is 
@@ -45,7 +48,8 @@ The following analysis aims to
 ### Testing 
 
 ### Limitations 
-- 
+
 
 ## Discussion
-
+- Represent the model in a way that is compatible with the raw data points but still represents the dimensionality of the Principal Component Analysis
+- Why? Because said transformation could help immensley with the interpretation of the model (especially in linear regression), and can provide greater leeway to ETL processes where dimensionality reduction may be unfavourable to perform in the pipeline itself.
