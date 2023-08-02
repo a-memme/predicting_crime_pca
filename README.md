@@ -21,6 +21,7 @@ The following analysis aims to
 - Principal components are then transformed back to their original vector space and models chosen via evaluation are tested and compared for performance.
 
 ## Results
+*See [pca_crime.R](https://github.com/a-memme/predicting_crime_pca/blob/main/pca_crime.R) for details on code*
 
 ### Model Evaluation 
 ##### Multiple Regression - Original Dataset
